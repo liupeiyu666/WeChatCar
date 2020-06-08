@@ -1,0 +1,9 @@
+{
+  "usingComponents": {
+    "SearchBar":"../../components/SearchBar/SearchBar",
+    "SellItem":"../../components/SellItem/SellItem"
+  },
+  "navigationBarTitleText": "二手车主页",
+  "navigationBarBackgroundColor":"#FF0000",
+  "enablePullDownRefresh": true
+}

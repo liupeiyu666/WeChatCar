@@ -1,0 +1,82 @@
+<view class="section">
+  <picker bindchange="bindNamePickerChange" value="{{namePickerIndex}}" range="{{namePicker}}">
+    <view class="contener">
+      <view class="title">产品名称:</view>
+      <view class="info"> {{namePicker[namePickerIndex]}}</view>
+    </view>
+  </picker>
+</view>
+<view class="line"></view>
+
+<view class="section">
+  <picker mode="date" value="{{date}}" start="2015-09-01" end="2017-09-01" bindchange="bindDateChange">
+    <view class="contener">
+      <view class="title">生产日期:</view>
+      <view class="info"> {{date}}</view>
+    </view>
+  </picker>
+</view>
+<view class="line"></view>
+
+<view class="section">
+  <view class="contener">
+    <view class="title">价格:</view>
+      <input class="input" name="userName" type="number" placeholder="默认面议" 
+    bindinput="onInputPrice"/>
+    <view class="title">元</view>
+  </view>
+</view>
+<view class="line"></view>
+
+
+<view class="section">
+  <view class="contener">
+    <view class="title">地址:</view>
+    <view class="info" bindtap="chooseLocation"> {{locationName}}</view>
+  </view>
+</view>
+<view class="line"></view>
+
+
+<view class="section">
+  <view class="contener">
+    <view class="title">备注:</view>
+      <input class="input" name="userName" type="text" placeholder="输入备注" 
+    bindinput="onInputNotes"/>
+  </view>
+</view>
+<view class="noteSyte">  备注展示：{{notes}}</view>
+<view class="line"></view>
+
+<view class="upImageText" bindtap="upimg">上传图片(最多6张)</view>
+<view class="imageContainer">
+  <view class="imageLineContainer">
+    <view wx:for="{{img_arr}}" wx:key="key" wx:for-item="item">
+      <block wx:if="{{index<3}}">
+        <view class="ImageRoot">
+          <image class="ImageGoods" src="{{item}}" bindtap="onTapImage" id="{{index}}"></image>
+          <image class="ImageClose" src="Images/close.png" bindtap="onTapCloseImage" id="{{index}}"></image>         
+        </view>         
+      </block>
+    </view>
+    <image class="AddImage" src="Images/Add.png" bindtap="upimg" id="{{index}}" wx:if="{{img_arr.length<3}}"></image>
+  </view>
+  <view class="imageLineContainer">
+    <view wx:for="{{img_arr}}" wx:key="key" wx:for-item="item">
+      <block wx:if="{{index>=3}}">
+        <view class="ImageRoot">
+          <image class="ImageGoods" src="{{item}}" bindtap="onTapImage" id="{{index}}"></image>
+          <image class="ImageClose" src="Images/close.png" bindtap="onTapCloseImage" id="{{index}}"></image>
+        </view>
+      </block>
+    </view>
+    <image class="AddImage" src="Images/Add.png" bindtap="upimg" id="{{index}}" wx:if="{{img_arr.length>=3&&img_arr.length<=5}}"></image>
+  </view>
+</view>
+
+
+  <view class='publishBtn' bindtap="upload">
+  <text>发布</text>
+  </view>
+
+

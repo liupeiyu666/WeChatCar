@@ -1,0 +1,33 @@
+.menu-parent {
+  height: 70rpx;
+  position: relative;
+  top: 3rpx;
+ /** border: 3rpx solid red;**/
+  display: flex;
+  justify-content: space-between;
+}
+
+.menu-child {
+  top: 2rpx;
+  width: 130rpx;
+  height: 62rpx;
+  background-color: #4caf50;
+  color: white;
+  font-size: 15px;
+  text-align:center;
+}
+
+.menu-seclectchild
+{
+   top: 2rpx;
+  width: 130rpx;
+  height: 62rpx;
+  background-color: #ebe6e7;
+  color: rgb(241, 16, 16);
+  font-size: 16px;
+  text-align:center;
+}
+.menu-picContainer
+{
+  
+}

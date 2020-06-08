@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.newedu.onlearn.mapper.CarSellMapper">
+
+	<select id="GetAllSell"
+		resultType="com.newedu.onlearn.po.CarSell">
+		select WxOpenId,SellId,Title,GoodsName,Price,Inventory,SourceUrl,Location,Date,Longitude,Latitude,NickName,AvatarUrl
+		from
+		car_sell
+	</select>
+	<!-- 添加教师信息 -->
+	<insert id="AddSell"
+		parameterType="com.newedu.onlearn.po.CarSell">
+		insert into car_sell(WxOpenId,SellId,Title,GoodsName,Price,Inventory,SourceUrl,Location,Date,Longitude,Latitude)
+		values (#{WxOpenId},#{SellId},#{Title},#{GoodsName},#{Price},#{Inventory},#{SourceUrl},#{Location},#{Date},#{Longitude},#{Latitude})
+	</insert>
+	<update id="UpdateSell" parameterType="com.newedu.onlearn.po.CarSell">
+  	update car_sell
+  	<set>
+  		<if test="WxOpenId != null">WxOpenId = #{WxOpenId},</if>
+  		<if test="SellId != null">SellId = #{SellId},</if>
+  		<if test="Title != null">Title = #{Title},</if>
+  		<if test="GoodsName != null">GoodsName = #{GoodsName},</if>
+  		<if test="Price != null">Price = #{Price},</if>
+  		<if test="Inventory != null">Inventory = #{Inventory},</if>
+  		<if test="SourceUrl != null">SourceUrl = #{SourceUrl},</if>
+  		<if test="Location != null">Location = #{Location},</if>
+  		<if test="Date != null">Date = #{Date},</if>
+  		<if test="Longitude != null">Longitude = #{Longitude},</if>
+  		<if test="Latitude != null">Latitude = #{Latitude},</if>
+  	</set>
+  	where WxOpenId = #{WxOpenId} and SellId=#{SellId}
+  </update>
+</mapper>

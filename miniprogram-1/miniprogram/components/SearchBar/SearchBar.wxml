@@ -1,0 +1,8 @@
+<view class="menu-parent">
+  <view data-name="{{itemName.name}}" bindtap="onTap" wx:for="{{searchData}}" wx:key="key"  wx:for-item="itemName">
+    <view class="menu-seclectchild" wx:if="{{itemName.isSelect}}"> {{itemName.name}}</view>
+    <view class="menu-child" wx:else> {{itemName.name}}</view>
+  </view>
+  <view>
+  </view>
+</view>

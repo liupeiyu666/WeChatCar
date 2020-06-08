@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.neuedu.onlearn.mapper.MediaMapper">
+
+	<resultMap type="Media" id="baseMediaMap">
+		<id column="id" property="id"/>
+		<result column="file_desc" property="fileDesc"/>
+		<result column="url" property="url"/>
+		<result column="create_by" property="teacher.id"/>
+		<result column="type" property="type"/>
+		<result column="create_time" property="createTime"/>
+	</resultMap>
+
+  <insert id="insert" parameterType = "Media" useGeneratedKeys="true" keyColumn="id" keyProperty="id">
+  	insert into tb_media (file_desc,url,create_by,type) 
+  	values(#{fileDesc},#{url},#{teacher.id},#{type})
+  </insert>
+  
+  <select id="getMediaByKeywordCount" resultType="int">
+  <bind name="keywords" value="'%' + keyword + '%'"/>
+  		select count(*) from tb_media where create_by = #{teacherId}
+  		<if test="type !=0">
+  			and type = #{type}
+  		</if>
+  		<if test="keyword !=0">
+  			and file_desc like #{keywords}
+  		</if>
+  </select>
+  
+  <select id="getMediaByKeyword" resultMap="baseMediaMap">
+  <bind name="keywords" value="'%' + keyword + '%'"/>
+  		select id,file_desc,url,create_by,type,create_time
+  		from tb_media where create_by = #{teacherId}
+  		<if test="type !=0">
+  			and type = #{type}
+  		</if>
+  		<if test="keyword !=0">
+  			and file_desc like #{keywords}
+  		</if>
+  		limit #{begin},#{pageSize}
+  </select>
+  
+  
+  
+</mapper>

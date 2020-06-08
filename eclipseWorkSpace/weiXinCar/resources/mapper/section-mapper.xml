@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.neuedu.onlearn.mapper.SectionMapper">
+	<resultMap type="Section" id="baseSectionMap">
+		<id column="id" property="id"/>
+		<result column="course_id" property="courseId"/>
+		<result column="teacher_id" property="teacherId"/>
+		<result column="title" property="title"/>
+		<result column="title_wrapper" property="titleWrapper"/>
+		<result column="ordered" property="ordered"/>
+		<result column="content" property="content"/>
+		<result column="audio" property="audio"/>
+		<result column="status" property="status"/>
+		<result column="video" property="video"/>
+		<result column="create_by" property="createBy"/>
+		<result column="create_time" property="createTime"/>
+		<result column="update_time" property="updateTime"/>
+	</resultMap>
+	<!-- 通过标题查找小节 -->
+	<select id="findSectionByTitle" resultMap="baseSectionMap">
+    select id,course_id,teacher_id,title,title_wrapper,ordered,content,audio,status,video,create_by,create_time,update_time
+	from tb_section where title = #{title}
+  </select>
+  <!-- 通过id查找小节 -->
+	<select id="findSectionById" resultMap="baseSectionMap">
+    select id,course_id,teacher_id,title,title_wrapper,ordered,content,audio,status,video,create_by,create_time,update_time
+	from tb_section where id = #{id}
+  </select>
+  
+  <!-- 分页查询小节信息 -->
+  <select id="getSectionByKeyword" resultMap="baseSectionMap">
+  	<bind name="keywords" value="'%' + keyword + '%'"></bind>
+   select id,course_id,teacher_id,title,title_wrapper,ordered,content,audio,status,video,create_by,create_time,update_time
+    from tb_section
+    <where>
+    	<if test="keyword !=''">
+    	course_id like #{keywords} or
+    	teacher_id like #{keywords} or
+    	title like #{keywords} or
+    	ordered like #{keywords} or
+    	create_by like #{keywords} 
+    	</if>
+    </where>
+    limit #{begin},#{pageSize}
+  </select>
+  
+   <select id="getSectionByKeywordCount" resultType="int">
+  	<bind name="keywords" value="'%' + keyword + '%'"></bind>
+    select count(*) from tb_section
+    <where>
+    	<if test="keyword !=''">
+    	course_id like #{keywords} or
+    	teacher_id like #{keywords} or
+    	title like #{keywords} or
+    	ordered like #{keywords} or
+    	create_by like #{keywords} 
+    	</if>
+    </where>
+  </select>
+  
+  
+   	<!-- 添加小节 -->
+  <insert id="addSection" parameterType = "com.neuedu.onlearn.po.Section" useGeneratedKeys="true" keyColumn="id" keyProperty="id">
+  	insert into tb_section (teacher_id,title,ordered,audio,status,video) 
+  	values(#{teacherId},#{title},#{ordered},#{audio},1,#{video})
+  </insert>
+  
+  <!-- 修改小节信息 -->
+  <update id="updateSection" parameterType="Section">
+  	update tb_section
+  	<set>
+  		<if test="courseId != null">course_id = #{coursId},</if>
+  		<if test="teacherId != null">teacher_id = #{teacherId},</if>
+  		<if test="title != null">title = #{title},</if>
+  		<if test="ordered != null">ordered = #{ordered},</if>
+  		<if test="content != null">content = #{content},</if>
+  		<if test="audio != null">audio = #{audio},</if>
+  		<if test="status != null">status = #{status},</if>
+  		<if test="video != null">video = #{video},</if>
+  		<if test="createBy != null">create_by = #{createBy},</if>
+  	</set>
+  	where id = #{id}
+  </update>
+  
+  
+</mapper>

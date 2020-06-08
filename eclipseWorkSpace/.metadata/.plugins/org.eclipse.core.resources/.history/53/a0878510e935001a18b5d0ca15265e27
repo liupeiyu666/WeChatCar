@@ -1,0 +1,80 @@
+package com.newedu.onlearn.runtimeData;
+/*
+ * 一个出售的数据结构*/
+
+import java.awt.List;
+import java.util.LinkedList;
+import java.util.Map;
+
+import com.newedu.onlearn.po.CarSell;
+
+public class OneCarSell
+{
+	public String WxOpenId;
+	public Integer SellId=0;
+	public String Title;
+    public String GoodsName;
+	public Integer Price=0;
+    public Integer Inventory=0;
+    
+	public LinkedList<String> SourceUrlList=new LinkedList<String>();
+    public String Location;
+    public String Date;
+    public Double Longitude;
+    public Double Latitude;
+    public String NickName;
+    public String AvatarUrl;
+    /*
+     * 由于数据库存储的数据是特定的数据格式，这里需要进行一次解析*/
+    public OneCarSell(CarSell p_CarSell)
+    {
+    	WxOpenId=p_CarSell.WxOpenId;
+    	SellId=p_CarSell.SellId;
+    	Title=p_CarSell.Title;
+    	GoodsName=p_CarSell.GoodsName;
+    	Price=p_CarSell.Price;
+    	Inventory=p_CarSell.Inventory;
+    	//资源地址以,号分隔
+    	if (!p_CarSell.SourceUrl.equals(null))
+		{
+    	   	String[] t_urlArry=p_CarSell.SourceUrl.split(",");
+        	for (int i = 0; i < t_urlArry.length; i++)
+    		{    		
+        		SourceUrlList.add(t_urlArry[i]);
+    		}
+		}
+ 
+    	
+    	Location=p_CarSell.Location;
+    	Date=p_CarSell.Date;
+    	Longitude=p_CarSell.Longitude;
+    	Latitude=p_CarSell.Latitude;
+    }
+   public CarSell ToCarSell()
+{
+	CarSell t_CarSell=new CarSell();
+	t_CarSell.WxOpenId=this.WxOpenId;
+	t_CarSell.SellId=this.SellId;
+	t_CarSell.Title=this.Title;
+	t_CarSell.GoodsName=this.GoodsName;
+	t_CarSell.Price=this.Price;
+	t_CarSell.Inventory=this.Inventory;
+	t_CarSell.Location=this.Location;
+	t_CarSell.Date=this.Date;
+	t_CarSell.Longitude=this.Longitude;
+	t_CarSell.Latitude=this.Latitude;
+	
+	//设置图片地址
+	String t_url="";
+	for (int i = 0; i < SourceUrlList.size(); i++)
+	{
+		t_url+=SourceUrlList.get(i);
+		if (i<SourceUrlList.size()-1)
+		{
+			t_url+=",";
+		}		
+	}
+	t_CarSell.SourceUrl=t_url;
+	return t_CarSell;
+}
+}

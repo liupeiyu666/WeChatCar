@@ -1,0 +1,33 @@
+<view class="line"></view>
+<view class="headContainer">
+  <image mode="widthFix" class="bossImage" src="{{oneItem.AvatarUrl}}"></image>
+  <view class="nameInfoContainer">
+    <text class="bossName">{{oneItem.NickName}}</text>
+    <view class="goodsInfoContainer">
+      <view class="goodsInfo">{{oneItem.GoodsName}}</view>
+      <view class="goodsPrice">价格：{{oneItem.Price}}</view>
+    </view>
+  </view>
+</view>
+<view class="imageContainer" >
+  <view class="imageLineContainer">
+    <view  wx:for="{{oneItem.SourceUrlList}}" wx:key="key"  wx:for-item="item">
+    <image class="ImageGoods" src="{{item}}"  wx:if="{{index<3&&item.length>0}}"></image>
+    </view>
+  </view>
+    <view class="imageLineContainer">
+      <view  wx:for="{{oneItem.SourceUrlList}}" wx:key="key"  wx:for-item="item">
+    <image class="ImageGoods"  src="{{item}}"  wx:if="{{index>=3&&item.length>0}}"></image>
+    </view>
+  </view>
+</view>
+<view class="position">
+{{oneItem.Location}}
+</view>
+<view class="endContainer">
+<view class="date">{{oneItem.Date}}</view>
+<image class="conect" src="./phone.png"></image>
+<image class="conect" src="./msg.png"></image>
+<image class="conect" src="./police.png"></image>
+</view>
+

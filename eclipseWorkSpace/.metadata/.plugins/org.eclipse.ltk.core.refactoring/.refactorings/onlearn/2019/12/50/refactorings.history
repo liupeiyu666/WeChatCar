@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename type &apos;com.newedu.onlearn.po.User&apos; to &apos;CarUser&apos;&#x0D;&#x0A;- Original project: &apos;onlearn&apos;&#x0D;&#x0A;- Original element: &apos;com.newedu.onlearn.po.User&apos;&#x0D;&#x0A;- Renamed element: &apos;com.newedu.onlearn.po.CarUser&apos;&#x0D;&#x0A;- Update references to refactored element&#x0D;&#x0A;- Update textual occurrences in comments and strings" description="Rename type &apos;User&apos;" flags="589830" id="org.eclipse.jdt.ui.rename.type" input="/src\/main\/java&lt;com.newedu.onlearn.po{User.java[User" matchStrategy="1" name="CarUser" qualified="false" references="true" similarDeclarations="false" stamp="1576031654243" textual="false" version="1.0"/>
+</session>

@@ -1,0 +1,14 @@
+<view>
+  <swiper autoplay indicator-dots circular>
+    <swiper-item wx:for="{{swiperList}}" wx:key="goods_id">
+      <navigator url="/pages/index/index">
+        <image mode="widthFix" src="{{item.image_src}}" bindtap="httpTest"> </image>
+      </navigator>
+    </swiper-item>
+  </swiper>
+</view>
+<SearchBar searchData="{{searchData}}"></SearchBar>
+<view>{{sellData.length}}</view>
+<view wx:for="{{sellData}}" wx:key="key"  wx:for-item="item">
+<SellItem oneItem="{{item}}"></SellItem>
+</view>

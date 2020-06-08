@@ -1,0 +1,21 @@
+<view wx:if="{{canIUse}}">
+  <view class='header'>
+    <image src='{{avatarurl}}'></image>
+  </view>
+
+  <view class='content'>
+    <view>申请获取以下权限</view>
+    <text>获得你的公开信息(昵称，头像等)</text>
+  </view>
+  <view class='buttom'>
+   <button class='bottom refuse' bindtap='refuse'>拒绝</button>
+    <button class='bottom enter' type='primary' open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="login">
+      授权登录
+    </button>
+   
+  </view>
+
+</view>
+
+<view wx:else>请升级微信版本</view>
+
