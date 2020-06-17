@@ -1,0 +1,14 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="onlearn:war">
+    <output-path>$PROJECT_DIR$/eclipseWorkSpace/onlearn/target</output-path>
+    <properties id="maven-jee-properties">
+      <options>
+        <module>onlearn</module>
+        <packaging>war</packaging>
+      </options>
+    </properties>
+    <root id="archive" name="onlearn.war">
+      <element id="artifact" artifact-name="onlearn:war exploded" />
+    </root>
+  </artifact>
+</component>

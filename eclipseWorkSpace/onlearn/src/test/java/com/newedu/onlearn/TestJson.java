@@ -26,6 +26,7 @@ public class TestJson
 		t_mm.add(new Temp());
 		t_mm.add(new Temp());
 		t_mm.add(new Temp());
+		//123
 		System.out.println(name.writeValueAsString(t_mm));
 		
 		
