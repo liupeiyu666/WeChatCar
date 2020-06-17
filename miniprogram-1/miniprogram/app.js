@@ -4,8 +4,10 @@ App({
     wxOpenId: "",
     avatarurl: "",
     nickName:"",
-    netUrl:"http://127.0.0.1:80/onlearn/app/",
-    imageUrl:"http://127.0.0.1:80/onlearn/",
+    // netUrl:"http://ndyx.kingfor.top/onlearn/app/",
+    // imageUrl:"http://ndyx.kingfor.top/onlearn/",
+    netUrl: "http://localhost:8888/onlearn/app/",
+    imageUrl: "http://localhost:8888/onlearn/",
   },
   onLaunch: function () {
     console.log("onLaunch")
