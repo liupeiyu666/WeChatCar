@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ne.weixincar.onlearn.mapper.UsersMapper">
+	<select id="getUserById"
+		resultType="com.ne.weixincar.onlearn.pojo.CarUser">
+		select WxOpenId,
+		Phone,
+		PersonalNote,
+		VipLevel
+		from
+		car_users
+		where WxOpenId = #{id}
+	</select>
+	<select id="getAllUsers"
+		resultType="com.ne.weixincar.onlearn.pojo.CarUser">
+		select WxOpenId,
+		Phone,
+		PersonalNote,
+		VipLevel
+		from
+		car_users
+	</select>
+	<!-- 添加教师信息 -->
+	<insert id="addUser"  parameterType="com.ne.weixincar.onlearn.pojo.CarUser">
+		insert into car_users(WxOpenId
+		,Phone
+		,PersonalNote,VipLevel)
+		values (#{WxOpenId},#{Phone},#{PersonalNote},#{VipLevel})
+	</insert>
+</mapper>
