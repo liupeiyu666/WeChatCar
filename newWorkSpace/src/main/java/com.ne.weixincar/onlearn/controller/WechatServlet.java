@@ -34,6 +34,8 @@ public class WechatServlet {
             throws ServletException, IOException {
 
         // 获取操作类型，根据类型执行不同操作
+        String owner = request.getParameter("ownersign");
+
         String operFlag = request.getParameter("operFlag");
         System.out.println("operFlag"+operFlag);
         String results = "";
