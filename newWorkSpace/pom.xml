@@ -68,4 +68,31 @@
       <version>1.18.2</version>
     </dependency>
   </dependencies>
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-maven-plugin</artifactId>
+        <configuration>
+          <includes>
+            <include>
+              <groupId>null</groupId>
+              <artifactId>null</artifactId>
+            </include>
+          </includes>
+          <fork>true</fork>
+          <!--打包成可执行jar-->
+          <executable>true</executable>
+        </configuration>
+        <executions>
+          <execution>
+            <goals>
+              <goal>repackage</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
+
+  </build>
 </project>

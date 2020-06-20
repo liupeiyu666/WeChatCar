@@ -42,13 +42,6 @@ public class WebConfig implements WebMvcConfigurer {
      */
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
-//        //open swagger
-//        if (true) {
-//
-//            //swagger
-//            registry.addResourceHandler("swagger-ui.html").addResourceLocations("classpath:/META-INF/resources/");
-//            registry.addResourceHandler("/webjars/**").addResourceLocations("classpath:/META-INF/resources/webjars/");
-//        }
 
         //本应用
         registry.addResourceHandler("/static/**").addResourceLocations("classpath:/resources/static/",
@@ -58,23 +51,7 @@ public class WebConfig implements WebMvcConfigurer {
         registry.addResourceHandler("/**").addResourceLocations("classpath:/assets/",
                 "classpath:/META-INF/resources/","classpath:/resources/","classpath:/static/", "classpath:/public/");
     }
-//
-//    /**
-//     * 增加对rest api鉴权的spring mvc拦截器
-//     */
-//    @Override
-//    public void addInterceptors(InterceptorRegistry registry) {
-//        registry.addInterceptor(new RestApiInteceptor()).addPathPatterns("/gunsApi/**");
-//        registry.addInterceptor(new AttributeSetInteceptor()).excludePathPatterns(Const.NONE_PERMISSION_RES).addPathPatterns("/**");
-//    }
 
-//    /**
-//     * 默认错误页面，返回json
-//     */
-//    @Bean("error")
-//    public GunsErrorView error() {
-//        return new GunsErrorView();
-//    }
 
     /**
      * druidServlet注册
